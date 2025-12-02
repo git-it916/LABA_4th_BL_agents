@@ -117,9 +117,14 @@ def calculate_sector_monthly_average(df: pd.DataFrame, metric_cols=None) -> pd.D
 def calculate_accounting_indicator():
     print("[INFO] Tier 2 회계 지표 계산 시작...")
     
-    # 1. Compustat 로드
-    comp_path = os.path.join(BASE_PATH_COMPUSTAT, "compustat_2021.05_2024.12_company.csv")
-    if not os.path.exists(comp_path):
+    # 1. Compustat 로드 (여러 후보 파일 중 존재하는 것 사용)
+    comp_candidates = [
+        os.path.join(BASE_PATH_COMPUSTAT, "compustat_2021.01_2024.12_company.csv"),
+        os.path.join(BASE_PATH_COMPUSTAT, "compustat_2021.05_2024.12_company.csv"),
+    ]
+    comp_path = next((p for p in comp_candidates if os.path.exists(p)), None)
+    if comp_path is None:
+        print("[ERROR] Compustat 원본 파일을 찾지 못했습니다.")
         return pd.DataFrame()
 
     compustat_df = pd.read_csv(comp_path)
