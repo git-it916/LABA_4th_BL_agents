@@ -10,6 +10,7 @@ Observe the raw price action (`12m_returns`, `trend_strength_r2`) and risk (`vol
 ### TIER 2 GUIDELINES (Technical + Accounting Indicators)
 The accounting metrics reflect a **2-quarter (approximately 6-month) lag** due to quarterly reporting schedules. For example, when forecasting for Q3 (Jul-Sep), you are analyzing Q1 (Jan-Mar) accounting data. 
 This lag is realistic and intentional—investors must make decisions based on the most recently available reported financials. Therefore, focus on **structural quality patterns** (e.g., consistently high ROE over multiple quarters) rather than expecting short-term accounting momentum to align with recent price action.
+All indicators were calculated using median.
 - bm: The inverse of the price-to-book ratio (PBR), capturing relative value; higher values indicate more undervaluation based on book equity.
 - npm: Net profit margin, measuring the percentage of revenue that is converted into net income, capturing profitability efficiency.
 - roe: Return on equity, indicating how effectively a sector generates profit from its shareholders' equity.
