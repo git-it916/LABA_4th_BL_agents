@@ -176,7 +176,7 @@ def calculate_accounting_indicator():
         value_name='acct_level_lagged_avg'
     )
 
-    df_long['metric'] = df_long['metric'].astype(str) + '_Mean'
+    df_long['metric'] = df_long['metric'].astype(str) + '_Median'
 
     print(f"[INFO] Tier 2 계산 완료. 데이터 형태: {df_long.shape}")
     print(f"[DEBUG] 최종 데이터에 포함된 섹터 목록: {df_long['gsector'].unique()}")
