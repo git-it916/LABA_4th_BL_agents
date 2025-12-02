@@ -118,7 +118,7 @@ def calculate_accounting_indicator():
     print("[INFO] Tier 2 회계 지표 계산 시작...")
     
     # 1. Compustat 로드
-    comp_path = os.path.join(BASE_PATH_COMPUSTAT, "compustat_2021.01_2024.12_company.csv")
+    comp_path = os.path.join(BASE_PATH_COMPUSTAT, "compustat_2021.05_2024.12_company.csv")
     if not os.path.exists(comp_path):
         return pd.DataFrame()
 

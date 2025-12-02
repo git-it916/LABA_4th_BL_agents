@@ -138,8 +138,8 @@ def making_tier2_INPUT(end_date):
     if data.empty:
         print("[오류] Tier 2 데이터 생성 실패. 모든 값을 'N/A'로 반환합니다.")
         return [{
-            "sector": sector, "bm": "N/A", "capei": "N/A", "gprof": "N/A", 
-            "npm": "N/A", "roa": "N/A", "roe": "N/A", "totdebt_invcap": "N/A"
+            "sector": sector, "bm_Median": "N/A", "CAPEI_Median": "N/A", "GProf_Median": "N/A",
+            "npm_Median": "N/A", "roa_Median": "N/A", "roe_Median": "N/A", "totdebt_invcap_Median": "N/A"
         } for sector in sectors]
 
     def safe_get_metric_value(sector, metric_name):
@@ -164,18 +164,18 @@ def making_tier2_INPUT(end_date):
         else:
             return value
 
-    # 최종 리스트 생성 (절대값 Mean 사용)
+    # 최종 리스트 생성 (Median 사용)
     sector_data_list = []
     for sector in sectors:
         sector_data_list.append({
             "sector": sector,
-            "bm_Mean": safe_get_metric_value(sector, 'bm_Mean'),
-            "CAPEI_Mean": safe_get_metric_value(sector, 'CAPEI_Mean'),
-            "GProf_Mean": safe_get_metric_value(sector, 'GProf_Mean'),
-            "npm_Mean": safe_get_metric_value(sector, 'npm_Mean'),
-            "roa_Mean": safe_get_metric_value(sector, 'roa_Mean'),
-            "roe_Mean": safe_get_metric_value(sector, 'roe_Mean'),
-            "totdebt_invcap_Mean": safe_get_metric_value(sector, 'totdebt_invcap_Mean')
+            "bm_Median": safe_get_metric_value(sector, 'bm_Median'),
+            "CAPEI_Median": safe_get_metric_value(sector, 'CAPEI_Median'),
+            "GProf_Median": safe_get_metric_value(sector, 'GProf_Median'),
+            "npm_Median": safe_get_metric_value(sector, 'npm_Median'),
+            "roa_Median": safe_get_metric_value(sector, 'roa_Median'),
+            "roe_Median": safe_get_metric_value(sector, 'roe_Median'),
+            "totdebt_invcap_Median": safe_get_metric_value(sector, 'totdebt_invcap_Median')
         })
 
     return sector_data_list
@@ -216,7 +216,7 @@ def load_tier_guidelines(tier):
     Tier별 분석 가이드라인 로드 (누적 방식)
     """
     base_path = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_path, 'prompt_template', 'tier_guidelines_상윤.txt')
+    file_path = os.path.join(base_path, 'prompt_template', 'tier_guidelines_상윤_수정전.txt')
 
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -267,7 +267,7 @@ def making_system_prompt(tier):
     Tier별 시스템 프롬프트 생성
     """
     base_path = os.path.dirname(os.path.abspath(__file__))
-    template_path = os.path.join(base_path, 'prompt_template', 'system_prompt_상윤.txt')
+    template_path = os.path.join(base_path, 'prompt_template', 'system_prompt_상윤_수정전.txt')
 
     try:
         with open(template_path, 'r', encoding='utf-8') as f:
