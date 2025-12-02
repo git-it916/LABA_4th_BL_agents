@@ -90,7 +90,7 @@ def calculate_sector_monthly_average(df: pd.DataFrame, metric_cols=None) -> pd.D
     filtered = filtered.sort_values(["Ticker", "public_date"])
     for col in (metric_cols or []):
         if col in filtered.columns:
-            filtered[col] = filtered.groupby("Ticker")[col].shift(1)
+            filtered[col] = filtered.groupby("Ticker")[col].shift(5)
 
     # 모든 메트릭이 NaN이 된 행은 제거
     if metric_cols:
@@ -130,7 +130,7 @@ def calculate_accounting_indicator():
     compustat_df = add_sp500_flag(compustat_df, BASE_PATH_REPO)
     df_with_gics, _ = add_gics_sector_for_sp500(compustat_df, BASE_PATH_REPO)
 
-    # 3. 섹터 평균 계산
+    # 3. 섹터 median 계산
     metric_cols = ["bm", "npm", "roe", "roa", "CAPEI", "GProf", "totdebt_invcap"]
     available_metrics = [c for c in metric_cols if c in df_with_gics.columns]
     
