@@ -82,18 +82,30 @@ def calculate_sector_monthly_average(df: pd.DataFrame, metric_cols=None) -> pd.D
     if filtered.empty:
         return pd.DataFrame()
 
-    filtered["public_date"] = pd.to_datetime(filtered["public_date"])
-    filtered["year"]  = filtered["public_date"].dt.year
-    filtered["month"] = filtered["public_date"].dt.month
-
     if metric_cols is None:
         metric_cols = filtered.select_dtypes(include=["float32", "float64", "int32", "int64"]).columns.tolist()
         metric_cols = [c for c in metric_cols if c not in ["sp500", "year", "month"]]
 
+    # 회계 데이터는 직전 분기 공시값을 사용해야 하므로 티커별로 한 분기 래깅
+    filtered = filtered.sort_values(["Ticker", "public_date"])
+    for col in (metric_cols or []):
+        if col in filtered.columns:
+            filtered[col] = filtered.groupby("Ticker")[col].shift(1)
+
+    # 모든 메트릭이 NaN이 된 행은 제거
+    if metric_cols:
+        filtered = filtered.dropna(subset=metric_cols, how="all")
+    if filtered.empty:
+        return pd.DataFrame()
+
+    filtered["public_date"] = pd.to_datetime(filtered["public_date"])
+    filtered["year"]  = filtered["public_date"].dt.year
+    filtered["month"] = filtered["public_date"].dt.month
+
     grouped = (
         filtered
         .groupby(["gsector", "year", "month"])[metric_cols]
-        .mean()
+        .median()
         .reset_index()
         .sort_values(["gsector", "year", "month"])
     )
