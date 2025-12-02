@@ -1,0 +1,59 @@
+### TIER 1 GUIDELINES (Technical Indicators Only)
+- 12m_returns: The list of monthly returns over the most recent 12 months, representing short-term momentum and return patterns.
+- cagr_3y: The 3-year compound annual growth rate calculated from the sector's price index, capturing medium- to long-term performance growth.
+- volatility: The annualized standard deviation of monthly returns over the past 12 months, measuring recent return variability.
+- z_score: The standardized score of the latest monthly return relative to the mean and standard deviation of the past 24 months, indicating mean-reversion or deviation from typical behavior.
+- trend_strength_r2: The R-squared from a linear regression on the most recent 12 months of the price index, quantifying the strength and consistency of the sector's price trend.
+---
+
+### TIER 2 GUIDELINES (Technical + Accounting Indicators)
+The accounting metrics reflect a **2-quarter (approximately 6-month) lag** due to quarterly reporting schedules. For example, when forecasting for Q3 (Jul-Sep), you are analyzing Q1 (Jan-Mar) accounting data.
+This lag is realistic and intentional—investors must make decisions based on the most recently available reported financials. Therefore, focus on **structural quality patterns** (e.g., consistently high ROE over multiple quarters) rather than expecting short-term accounting momentum to align with recent price action.
+All indicators were calculated using median.
+- bm: The inverse of the price-to-book ratio (PBR), capturing relative value; higher values indicate more undervaluation based on book equity.
+- npm: Net profit margin, measuring the percentage of revenue that is converted into net income, capturing profitability efficiency.
+- roe: Return on equity, indicating how effectively a sector generates profit from its shareholders' equity.
+- roa: Return on assets, measuring how efficiently a sector's assets are used to generate earnings.
+- CAPEI: A CAPEX-related indicator reflecting capital expenditure intensity or asset reinvestment behavior, typically capturing long-term investment and capital allocation efficiency.
+- GProf: Gross profit margin, measuring core profitability from revenue after accounting for direct production costs.
+- totdebt_invcap: Total debt divided by invested capital (or market capitalization proxy), capturing leverage and balance-sheet risk.
+---
+
+### TIER 3 GUIDELINES (Technical + Accounting + Macroeconomic Indicators)
+- FEDFUNDS: The effective federal funds rate level
+- CPI: The year-over-year percent change in the Consumer Price Index
+- G20_CLI: The OECD Composite Leading Indicator index level
+- T10Y2Y: The yield spread between the 10-year and 2-year U.S. Treasury rates
+- GPDIC1_PCA: The year-over-year percent change in real private domestic investment
+---
+
+### SIGNAL CONFLICT RESOLUTION (CRITICAL - Apply in Tier 2 and Tier 3)
+
+When signals from different tiers suggest contradictory views, apply the following **strict priority hierarchy**:
+
+**Priority Order: Technical > Accounting >  Macro
+
+**Rationale**:
+- Tier 1 signals (price momentum, trend, volatility) reflect **real-time market behavior** and are most predictive for short-term (19-day) tactical horizons.
+- Tier 2 signals (accounting fundamentals) have a **6-month lag** and capture structural quality, but may not align with near-term price action.
+- Tier 3 signals (macroeconomic) affect all sectors broadly and are **least sector-specific** for tactical allocation.
+
+**In Practice**:
+- First, form your base views using Tier 1 technical signals
+- Then, use Tier 2 accounting data to **validate or slightly adjust** (not override) Tier 1 views
+- Finally, use Tier 3 macro data as **context only** - it should rarely change Tier 1/Tier 2 conclusions
+
+---
+
+### COMMON RULES (All Tiers)
+
+**View Construction**:
+- Count: Maximum 5 pairs. No fixed minimum (Quality > Quantity). No duplicate
+- Each sector can appear max 2 times across all pairs
+- relative_return_view range: -0.05 to +0.05 (realistic)
+ - **Note**: Use decimal format. (e.g., a +2.5% expected relative return = `0.025`)
+- Rank pairs by conviction (highest first)
+
+**Quality Checks**:
+- Avoid contradiction (same sector both Long and Short)
+- Ensure views are actionable (not too small, not too large)
