@@ -1,4 +1,6 @@
 import os
+import gc
+import torch
 
 from .BL_MVO.BL_opt import get_bl_outputs
 from .BL_MVO.MVO_opt import MVO_Optimizer
@@ -7,6 +9,14 @@ from .util.sector_mapping import map_code_to_gics_sector
 from .util.save_log_as_json import save_BL_as_json, save_performance_as_json
 from aiportfolio.backtest.calculating_performance import backtest
 from aiportfolio.backtest.visalization import calculate_average_cumulative_returns
+
+
+def _clear_gpu_memory():
+    """각 LLM 호출 후 GPU 메모리 정리"""
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
 
 def scene(simul_name, Tier, tau, forecast_period, backtest_days_count, model='llama'):
     """
@@ -30,14 +40,17 @@ def scene(simul_name, Tier, tau, forecast_period, backtest_days_count, model='ll
     results = []
 
     # 기간별 BL -> MVO 수행
-    for period in forecast_date:
+    for i, period in enumerate(forecast_date):
 
-        print(f"--- forecast_date: {period['forecast_date']} ---")
+        print(f"--- [{i+1}/{len(forecast_date)}] forecast_date: {period['forecast_date']} ---")
         start_date = period['start_date']
         end_date = period['end_date']
 
-        # BL 실행
+        # BL 실행 (LLM 호출 포함)
         BL = get_bl_outputs(tau, start_date=start_date, end_date=end_date, simul_name=simul_name, Tier=Tier, model=model)
+
+        # LLM 호출 후 GPU 메모리 정리
+        _clear_gpu_memory()
 
         # MVO 실행
         mvo = MVO_Optimizer(mu=BL[0], sigma=BL[1], sectors=BL[2])
@@ -53,6 +66,10 @@ def scene(simul_name, Tier, tau, forecast_period, backtest_days_count, model='ll
             "SECTOR": map_code_to_gics_sector(BL[2])
         }
         results.append(scenario_result)
+
+        # 각 기간 완료 후 메모리 상태 출력
+        if torch.cuda.is_available():
+            print(f"    [메모리] GPU 사용량: {torch.cuda.memory_allocated(0) / 1024**3:.2f} GB")
 
     save_BL_as_json(results, simul_name, Tier)
 

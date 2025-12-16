@@ -29,19 +29,9 @@ All indicators were calculated using median.
 
 ### SIGNAL CONFLICT RESOLUTION (CRITICAL - Apply in Tier 2 and Tier 3)
 
-When signals from different tiers suggest contradictory views, apply the following **strict priority hierarchy**:
+When signals from different tiers suggest contradictory views, apply the following **Priority Order**:
 
-**Priority Order: Technical > Accounting >  Macro
-
-**Rationale**:
-- Tier 1 signals (price momentum, trend, volatility) reflect **real-time market behavior** and are most predictive for short-term (19-day) tactical horizons.
-- Tier 2 signals (accounting fundamentals) have a **6-month lag** and capture structural quality, but may not align with near-term price action.
-- Tier 3 signals (macroeconomic) affect all sectors broadly and are **least sector-specific** for tactical allocation.
-
-**In Practice**:
-- First, form your base views using Tier 1 technical signals
-- Then, use Tier 2 accounting data to **validate or slightly adjust** (not override) Tier 1 views
-- Finally, use Tier 3 macro data as **context only** - it should rarely change Tier 1/Tier 2 conclusions
+**Priority Order**: 1. Technical, 2. Accounting, 3. Macroeconomic
 
 ---
 

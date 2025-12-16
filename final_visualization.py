@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 ######################################
 
 # 시각화할 시뮬레이션 이름
-simul_name = 'test_14_Tier1_1'  # 예: 'before_changing_prompt_2_Tier1_1'
+simul_name = '1202_1116_2'
 
 
 ######################################
