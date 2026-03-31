@@ -1,5 +1,5 @@
 from aiportfolio.scene import scene
-from aiportfolio.agents.Llama_config_수정중 import cleanup_pipeline
+from aiportfolio.agents.llama_config import cleanup_pipeline
 
 ######################################
 #            configuration           #

@@ -1,162 +1,128 @@
 import pandas as pd
-import numpy as np
 
+from aiportfolio.util.data_load.open_DTB3 import open_rf_rate
 from aiportfolio.util.data_load.open_final_stock_daily import open_final_stock_daily
+from aiportfolio.util.data_load.open_final_stock_months import open_final_stock_months
 
 # python -m aiportfolio.backtest.preprocessing
 
-# 일별 섹터별 수익률
+# ---------- 1) 일별 무위험수익률 제작 ----------
+# https://fred.stlouisfed.org/series/DTB3
+# 3-Month Treasury Bill Secondary Market Rate, Discount Basis (DTB3) 사용
+def preprocess_rf_rate():
+    df_rf = open_rf_rate()
+
+    # 컬럼명 변경
+    df_rf.rename(columns={'observation_date': 'date', 'DTB3': 'rf_daily'}, inplace=True)
+
+    # 날짜 형식 변환
+    df_rf['date'] = pd.to_datetime(df_rf['date'])
+
+    # 무위험 수익률 전처리
+    df_rf['rf_daily'] = df_rf['rf_daily'].ffill() # 휴일 때문에 발생하는 결측치 바로 전날의 값으로 채움.
+    df_rf['rf_daily'] = df_rf['rf_daily'] / 100  # % -> 소수점 변환
+    df_rf['rf_daily'] = (1 + df_rf['rf_daily']) ** (1/252) - 1  # 연율 -> 일율 변환
+    
+    return df_rf
+
+# --- 2) 포트폴리오 가중치 산출에 이용된 종목들만 필터링하기 위한 더미 데이터프레임 ---
+def filtering_dummy():
+    df_month = open_final_stock_months()
+
+    df_month['date'] = pd.to_datetime(df_month['cyear'].astype(str) + '-' + df_month['cmonth'].astype(str)) + pd.offsets.MonthEnd(0)
+
+    df_month = df_month.sort_values(['Ticker', 'date'])
+    df_month['sp500_lag1'] = df_month.groupby('Ticker')['sp500'].shift(1) # 전 월 sp500 값
+
+    df_sp = df_month[df_month['sp500_lag1']==1].copy()
+
+    df_sp['month'] = df_sp['date'].dt.to_period('M')
+    flag_tickers = df_sp[['month', 'Ticker']].drop_duplicates()
+
+    return flag_tickers
+
+# ---------- 3) 일별 s&p 500의 초과수익률 제작 ----------
 def sector_daily_returns():
     df = open_final_stock_daily()
 
-    df["DlyCalDt"] = pd.to_datetime(df["DlyCalDt"])
-    df["_ret_x_cap"] = df["DlyRet"] * df["DlyCap"]
-    group_keys = ["DlyCalDt", "gsector"]
+    df.rename(columns={'DlyCalDt': 'date'}, inplace=True) # 컬럼명 변경
+    df["date"] = pd.to_datetime(df["date"]) # 날짜 형식 변환
+
+    # 가중치 계산에 사용된 종목만 필터링(여기부터 결측치X)
+    df['month'] = df['date'].dt.to_period('M')
+    a = filtering_dummy()
+    daily_filtered = df.merge(a, on=['month','Ticker'])
+
+    # 초과수익률 계산
+    df_rf = preprocess_rf_rate()
+    merged_df = pd.merge(daily_filtered, df_rf, on='date', how='left') # 종목 데이터 기준으로 병합
+    merged_df['excess_return'] = merged_df['DlyRet'] - merged_df['rf_daily'] # 일별 초과수익률 계산
+
+    merged_df['prev_DlyCap'] = merged_df.groupby('Ticker')['DlyCap'].shift(1)
+
+    # 가중수익률 계산
+    merged_df["_ret_x_cap"] = merged_df["excess_return"] * merged_df["prev_DlyCap"]
+
+    group_keys = ['date', 'gsector']
     agg = (
-        df.groupby(group_keys, dropna=False)
-            .agg(sector_mktcap=("DlyCap", "sum"),
-                ret_x_cap_sum=("_ret_x_cap", "sum"))
-            .reset_index()
-    )
+    merged_df.groupby(group_keys, dropna=False)
+            .agg(sector_prevmktcap=("prev_DlyCap", "sum"),
+                ret_x_cap_sum=("_ret_x_cap", "sum"),
+                n_stocks=("Ticker", "count"))
+            .reset_index())
 
-    # 분모 0 방지
-    agg["sector_return"] = np.where(
-        agg["sector_mktcap"] != 0,
-        agg["ret_x_cap_sum"] / agg["sector_mktcap"],
-        np.nan
-    )
+    mask = agg["sector_prevmktcap"] != 0
+    agg["sector_excess_return"] = agg["ret_x_cap_sum"].div(agg["sector_prevmktcap"]).where(mask)
 
-    # 중간열 제거
+    # 중간열 제거 및 정리
     agg = agg.drop(columns=["ret_x_cap_sum"])
-
+    agg = agg.sort_values(['date', 'gsector']).reset_index(drop=True).copy()
+    
     return agg
 
-# 일별 전체 수익률
+# ---------- 4) 일별 market의 초과수익률 제작 ----------
 def total_daily_returns():
     df = open_final_stock_daily()
-    df["DlyCalDt"] = pd.to_datetime(df["DlyCalDt"])
 
-    df["_ret_x_cap"] = df["DlyRet"] * df["DlyCap"]
-    agg = df.groupby("DlyCalDt").agg(
-        total_mktcap=("DlyCap", "sum"),
+    df.rename(columns={'DlyCalDt': 'date'}, inplace=True) # 컬럼명 변경
+    df["date"] = pd.to_datetime(df["date"]) # 날짜 형식 변환
+
+    # 날짜 중복되는 종목 처리(시가총액이 가장 큰 것 선택)
+    filtered_df = (
+        df.sort_values(['Ticker', 'date', 'DlyCap'], ascending=[True, True, False])
+        .drop_duplicates(subset=['Ticker', 'date'], keep='first')
+        .sort_index()
+        .reset_index(drop=True)
+    )
+
+    # 초과수익률 계산
+    df_rf = preprocess_rf_rate()
+    merged_df = pd.merge(filtered_df, df_rf, on='date', how='left') # 종목 데이터 기준으로 병합
+    merged_df['excess_return'] = merged_df['DlyRet'] - merged_df['rf_daily'] # 일별 초과수익률 계산
+
+    merged_df['prev_DlyCap'] = merged_df.groupby('Ticker')['DlyCap'].shift(1)
+
+    merged_df["_ret_x_cap"] = merged_df["excess_return"] * merged_df["prev_DlyCap"]
+    agg = merged_df.groupby("date").agg(
+        total_mktcap=("prev_DlyCap", "sum"),
         total_ret_x_cap=("_ret_x_cap", "sum")
     ).reset_index()
 
     # 분모 0 방지
-    agg["total_return"] = np.where(
-        agg["total_mktcap"] != 0,
-        agg["total_ret_x_cap"] / agg["total_mktcap"],
-        np.nan
-    )
-
-    # 중간열 제거
-    agg = agg.drop(columns=["total_ret_x_cap"])
+    mask = agg["total_mktcap"] != 0
+    agg["total_excess_return"] = agg["total_ret_x_cap"].div(agg["total_mktcap"]).where(mask)
 
     return agg
 
-# 두개 뺀 값
+# ---------- 5) abnormal return 제작 ----------
 def final_abnormal_returns():
     a = sector_daily_returns()
     b = total_daily_returns()
-    merged_df = pd.merge(a, b, on='DlyCalDt', how='inner')
+    merged_df = pd.merge(a, b, on='date', how='inner')
 
-    merged_df['abnormal_return'] = merged_df['sector_return'] - merged_df['total_return']
+    merged_df['abnormal_return'] = merged_df['sector_excess_return'] - merged_df['total_excess_return']
 
-    pivoted_df = merged_df.pivot(index='DlyCalDt', columns='gsector', values='abnormal_return')
-    df_reset = pivoted_df.reset_index()
-
-    return df_reset
-
-# 테스트 1. (나스닥 NYSE 수익률 분포가 실제랑 비슷한지)
-'''
-# ---------- 1) N, Q 수익률 계산 ----------
-df = open_final_stock_daily()
-df["_ret_x_cap"] = df["DlyRet"] * df["DlyCap"]
-group_keys = ["DlyCalDt", "PrimaryExch"]
-agg_1 = (
-    df.groupby(group_keys, dropna=False)
-        .agg(exch_mktcap=("DlyCap", "sum"),
-            ret_x_cap_sum=("_ret_x_cap", "sum"))
-        .reset_index()
-)
-
-# 분모 0 방지
-agg_1["exch_return"] = np.where(
-    agg_1["exch_mktcap"] != 0,
-    agg_1["ret_x_cap_sum"] / agg_1["exch_mktcap"],
-    np.nan
-)
-
-# 중간열 제거
-agg_1 = agg_1.drop(columns=["ret_x_cap_sum"])
-
-# ---------- 중간 테스트용 시각화 ----------
-# 1. 거래소 'N'과 'Q' 데이터 필터링
-#    .copy()를 사용하여 SettingWithCopyWarning 방지
-df_n = agg_1[agg_1['PrimaryExch'] == 'N'].sort_values(by='DlyCalDt').copy()
-df_q = agg_1[agg_1['PrimaryExch'] == 'Q'].sort_values(by='DlyCalDt').copy()
-
-# 2. 각 거래소별 누적 수익률 계산
-#    (1 + 일별수익률)을 누적 곱한 후, 1을 빼준다.
-df_n['cumulative_return'] = (1 + df_n['exch_return']).cumprod() - 1
-df_q['cumulative_return'] = (1 + df_q['exch_return']).cumprod() - 1
-
-# 3. 시각화 설정
-plt.style.use('seaborn-v0_8-whitegrid')
-plt.figure(figsize=(14, 7))
-
-# 4. 누적 수익률을 라인 플롯으로 그리기
-plt.plot(df_n['DlyCalDt'], df_n['cumulative_return'], label='Exchange N', color='royalblue')
-plt.plot(df_q['DlyCalDt'], df_q['cumulative_return'], label='Exchange Q', color='orangered')
-
-# 5. 그래프 제목 및 레이블, 범례 추가
-plt.title('Cumulative Exchange Returns (N vs. Q)', fontsize=16)
-plt.xlabel('Date', fontsize=12)
-plt.ylabel('Cumulative Return', fontsize=12)
-plt.legend()
-
-# Y축 서식을 퍼센트(%)로 변경
-plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
-
-# 기준선 (0%) 추가
-plt.axhline(0, color='grey', linestyle='--', linewidth=0.8)
-
-# 6. 그래프 출력
-plt.show()
-'''
-
-# 테스트 2. (영업일 개수 확인)
-'''
-monthly_summary = b.groupby(pd.Grouper(key='DlyCalDt', freq='MS')).agg(
-    business_day_count=('total_return', 'count')
-).reset_index()
-
-print(monthly_summary)
-'''
-def sector_daily():
-    df = open_final_stock_daily()
-
-    df["DlyCalDt"] = pd.to_datetime(df["DlyCalDt"])
-    df["_ret_x_cap"] = df["DlyRet"] * df["DlyCap"]
-    group_keys = ["DlyCalDt", "gsector"]
-    agg = (
-        df.groupby(group_keys, dropna=False)
-            .agg(sector_mktcap=("DlyCap", "sum"),
-                ret_x_cap_sum=("_ret_x_cap", "sum"))
-            .reset_index()
-    )
-
-    # 분모 0 방지
-    agg["sector_return"] = np.where(
-        agg["sector_mktcap"] != 0,
-        agg["ret_x_cap_sum"] / agg["sector_mktcap"],
-        np.nan
-    )
-
-    # 중간열 제거
-    agg = agg.drop(columns=["ret_x_cap_sum"])
-
-    pivoted_df = agg.pivot(index='DlyCalDt', columns='gsector', values='sector_return')
+    pivoted_df = merged_df.pivot(index='date', columns='gsector', values='abnormal_return')
     df_reset = pivoted_df.reset_index()
 
     return df_reset

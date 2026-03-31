@@ -8,7 +8,7 @@ from .util.making_rollingdate import get_rolling_dates
 from .util.sector_mapping import map_code_to_gics_sector
 from .util.save_log_as_json import save_BL_as_json, save_performance_as_json
 from aiportfolio.backtest.calculating_performance import backtest
-from aiportfolio.backtest.visalization import calculate_average_cumulative_returns
+from aiportfolio.backtest.visualization import calculate_average_cumulative_returns
 
 
 def _clear_gpu_memory():

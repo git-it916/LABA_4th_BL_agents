@@ -1,8 +1,63 @@
 import json
-from aiportfolio.agents.Llama_config_수정중 import chat_with_llama3
-from aiportfolio.agents.prompt_maker_improved import making_system_prompt
-from aiportfolio.agents.prompt_maker_improved import making_user_prompt
+from aiportfolio.agents.llama_config import chat_with_llama3
+from aiportfolio.agents.prompt_maker import making_system_prompt
+from aiportfolio.agents.prompt_maker import making_user_prompt
 from aiportfolio.util.save_log_as_json import save_view_as_json
+
+
+def _print_user_prompt_summary(user_prompt, tier):
+    """사용자 프롬프트에 포함된 데이터를 요약 테이블로 출력"""
+    try:
+        data = json.loads(user_prompt[user_prompt.find('['):user_prompt.rfind(']')+1])
+    except (json.JSONDecodeError, ValueError):
+        return
+
+    # Tier 1: 기술적 지표
+    print(f"\n{'─'*80}")
+    print(f"  Tier 1: Technical Indicators")
+    print(f"{'─'*80}")
+    print(f"  {'Sector':<28} {'CAGR':>8} {'Z-Score':>8} {'Vol':>8} {'Trend':>8} {'12M Avg':>8}")
+    print(f"  {'─'*76}")
+    for s in data:
+        rets = s.get('ttm_returns', [])
+        avg_ret = sum(rets)/len(rets) if rets else 0
+        print(f"  {s['sector']:<28} {s.get('cagr_3y',0):>7.2%} {s.get('z_score',0):>8.2f} {s.get('volatility',0):>7.2%} {s.get('trend_strength',0):>8.2f} {avg_ret:>7.2%}")
+
+    # Tier 2: 회계 지표 (있으면)
+    if tier >= 2:
+        # 회계 데이터는 user_prompt 내 두 번째 JSON 블록
+        acct_start = user_prompt.find('[', user_prompt.find('Accounting'))
+        acct_end = user_prompt.find(']', acct_start) + 1 if acct_start != -1 else -1
+        if acct_start != -1 and acct_end > 0:
+            try:
+                acct = json.loads(user_prompt[acct_start:acct_end])
+                print(f"\n{'─'*80}")
+                print(f"  Tier 2: Accounting Indicators")
+                print(f"{'─'*80}")
+                print(f"  {'Sector':<28} {'B/M':>6} {'CAPEI':>7} {'ROE':>6} {'ROA':>6} {'NPM':>6} {'Debt':>6}")
+                print(f"  {'─'*70}")
+                for s in acct:
+                    print(f"  {s['sector']:<28} {s.get('bm_Median',0):>6.2f} {s.get('CAPEI_Median',0):>7.1f} {s.get('roe_Median',0):>5.2%} {s.get('roa_Median',0):>5.2%} {s.get('npm_Median',0):>5.2%} {s.get('totdebt_invcap_Median',0):>5.2%}")
+            except (json.JSONDecodeError, ValueError):
+                pass
+
+    # Tier 3: 거시 지표 (있으면)
+    if tier >= 3:
+        macro_start = user_prompt.find('{', user_prompt.find('Macro'))
+        macro_end = user_prompt.find('}', macro_start) + 1 if macro_start != -1 else -1
+        if macro_start != -1 and macro_end > 0:
+            try:
+                macro = json.loads(user_prompt[macro_start:macro_end])
+                print(f"\n{'─'*80}")
+                print(f"  Tier 3: Macro Indicators ({macro.get('date', 'N/A')})")
+                print(f"{'─'*80}")
+                for k, v in macro.items():
+                    if k != 'date':
+                        print(f"  {k:<20} {v:>10}")
+            except (json.JSONDecodeError, ValueError):
+                pass
+
+    print(f"{'─'*80}\n")
 
 def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='llama'):
     """
@@ -24,16 +79,9 @@ def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='ll
     # Tier 인자를 전달하여 단계별 데이터 포함
     user_prompt = making_user_prompt(end_date=end_date, tier=Tier)
 
-    # 프롬프트 출력
-    print("\n" + "="*80)
-    print("SYSTEM PROMPT (시스템 프롬프트)")
-    print("="*80)
-    print(system_prompt)
-    print("\n" + "="*80)
-    print("USER PROMPT (사용자 프롬프트)")
-    print("="*80)
-    print(user_prompt)
-    print("="*80 + "\n")
+    # 프롬프트 요약 출력
+    print(f"\n[프롬프트] 시스템: {len(system_prompt)}자 | 사용자: {len(user_prompt)}자")
+    _print_user_prompt_summary(user_prompt, Tier)
 
     # 3. 모델 실행
     if model == 'llama':
@@ -45,7 +93,7 @@ def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='ll
         )
     elif model == 'gemini':
         print(f"\n[알림] {end_date}에 포트폴리오를 제작하기 위해 Google Gemini API로 상대 뷰 생성을 요청합니다...\n")
-        from aiportfolio.agents.Llama_config_수정중 import call_gemini_api
+        from aiportfolio.agents.llama_config import call_gemini_api
         generated_text = call_gemini_api(
             system_prompt=system_prompt,
             user_prompt=user_prompt
@@ -53,12 +101,11 @@ def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='ll
     else:
         raise ValueError(f"Unknown model: '{model}'. Use 'llama' or 'gemini'")
 
-    # LLM 출력 전체 표시
-    print("\n" + "="*80)
-    print("LLM 원본 출력 (전체)")
-    print("="*80)
+    # LLM 출력 표시
+    print(f"\n[LLM 출력] ({len(generated_text)}자)")
+    print("-"*60)
     print(generated_text)
-    print("="*80 + "\n")
+    print("-"*60)
 
     # 4. JSON 추출 및 파싱
     try:
@@ -120,9 +167,7 @@ def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='ll
         cleaned_lines = [line.strip() for line in lines]
         json_string_clean = ''.join(cleaned_lines)
 
-        print(f"[디버그] 추출된 JSON 길이: {len(json_string_clean)} 문자")
-        print(f"[디버그] 추출된 JSON (앞 300자):\n{json_string_clean[:300]}\n")
-        print(f"[디버그] 추출된 JSON (뒤 300자):\n...{json_string_clean[-300:]}\n")
+        # 디버그 로그 최소화
 
         # JSON 파싱
         views_data = json.loads(json_string_clean)

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from aiportfolio.agents.Llama_config_수정중 import prepare_pipeline_obj
+from aiportfolio.agents.llama_config import prepare_pipeline_obj
 from aiportfolio.agents.Llama_view_generator import generate_sector_views
 from aiportfolio.agents.converting_viewtomatrix import open_view_log, create_Q_vector, create_P_matrix
 
