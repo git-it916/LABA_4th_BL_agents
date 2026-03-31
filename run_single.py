@@ -5,7 +5,7 @@ from aiportfolio.scene import scene
 ######################################
 
 simul_name = '0331_1'
-Tier = 2
+Tier = 3
 tau = 0.025
 model = 'llama'  # 'llama' or 'gemini'
 

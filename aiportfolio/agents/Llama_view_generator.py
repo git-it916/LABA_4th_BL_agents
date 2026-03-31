@@ -1,5 +1,5 @@
 import json
-from aiportfolio.agents.llama_config import chat_with_llama3
+from aiportfolio.agents.Llama_config import chat_with_llama3
 from aiportfolio.agents.prompt_maker import making_system_prompt
 from aiportfolio.agents.prompt_maker import making_user_prompt
 from aiportfolio.util.save_log_as_json import save_view_as_json
@@ -93,7 +93,7 @@ def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='ll
         )
     elif model == 'gemini':
         print(f"\n[알림] {end_date}에 포트폴리오를 제작하기 위해 Google Gemini API로 상대 뷰 생성을 요청합니다...\n")
-        from aiportfolio.agents.llama_config import call_gemini_api
+        from aiportfolio.agents.Llama_config import call_gemini_api
         generated_text = call_gemini_api(
             system_prompt=system_prompt,
             user_prompt=user_prompt

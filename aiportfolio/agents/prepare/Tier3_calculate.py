@@ -20,4 +20,18 @@ def calculate_macro_indicator():
     # 월의 말일 기준으로 변경
     data['date'] = data['date'] + pd.offsets.MonthEnd(0)
 
+    # 지표별 발표 지연(publication lag) 차등 적용
+    # - FEDFUNDS, T10Y2Y: 실시간 시장 데이터 → lag 0 (rolling offset 1개월로 충분)
+    # - CPI: BLS 발표 ~2-3주 지연 → lag 1개월
+    # - GPDIC1_PCA: BEA GDP 속보치 ~1개월 지연 → lag 1개월
+    # - G20_CLI: OECD 발표 ~2개월 지연 → lag 2개월
+    publication_lag = {
+        'CPI': 1,
+        'GPDIC1_PCA': 1,
+        'G20_CLI': 2,
+    }
+    for col, lag in publication_lag.items():
+        if col in data.columns:
+            data[col] = data[col].shift(lag)
+
     return data
