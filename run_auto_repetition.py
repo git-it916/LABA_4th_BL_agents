@@ -5,11 +5,11 @@ from aiportfolio.agents.Llama_config import cleanup_pipeline
 #            configuration           #
 ######################################
 
-simul_name_base = '0331_rep_'
+simul_name_base = '0331_rep50_'
 
-Tier1_repetition_count = 10
-Tier2_repetition_count = 10
-Tier3_repetition_count = 10
+Tier1_repetition_count = 50
+Tier2_repetition_count = 50
+Tier3_repetition_count = 50
 
 tau = 0.025
 model = 'llama'  # 'llama' or 'gemini'
