@@ -1,0 +1,186 @@
+[
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.015,
+            "reasoning": "Energy sector's strong technical momentum and relatively low accounting metrics (bm, CAPEI, GProf) suggest outperformance, while Materials sector's weak technical indicators and high accounting metrics (bm, CAPEI, GProf) indicate underperformance.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.025,
+            "reasoning": "Information Technology sector's strong technical momentum, high accounting metrics (bm, CAPEI, GProf), and relatively low debt levels suggest outperformance, while Real Estate sector's weak technical indicators and high accounting metrics (bm, CAPEI, GProf) indicate underperformance.",
+            "end_date": "2024-04-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.025,
+            "reasoning": "Strong trend strength and high conviction in Information Technology, combined with weak z-score and volatility in Energy, suggest a potential outperformance of IT over Energy.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.015,
+            "reasoning": "High trend strength and conviction in Communication Services, along with relatively low volatility and strong accounting metrics, support a potential outperformance of CS over CD.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.02,
+            "reasoning": "Strong trend strength and conviction in Financials, combined with relatively low volatility and strong accounting metrics, suggest a potential outperformance of Financials over Real Estate.",
+            "end_date": "2024-05-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.025,
+            "reasoning": "Strong trend strength and high conviction in Information Technology, combined with weak trend strength and low conviction in Utilities, suggest a potential outperformance of Information Technology over Utilities.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.015,
+            "reasoning": "High trend strength and conviction in Communication Services, combined with low trend strength and conviction in Real Estate, suggest a potential outperformance of Communication Services over Real Estate.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.02,
+            "reasoning": "Strong trend strength and conviction in Financials, combined with weak trend strength and low conviction in Consumer Staples, suggest a potential outperformance of Financials over Consumer Staples.",
+            "end_date": "2024-06-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.0215,
+            "reasoning": "Energy sector's strong technical momentum and accounting fundamentals, combined with the relatively weak performance of Consumer Discretionary, suggest a potential outperformance of Energy over Consumer Discretionary.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Materials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.015,
+            "reasoning": "Materials sector's improving technical momentum and relatively strong accounting fundamentals, combined with Real Estate's weak performance, suggest a potential outperformance of Materials over Real Estate.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.012,
+            "reasoning": "Industrials sector's strong technical momentum and relatively strong accounting fundamentals, combined with Utilities' weak performance, suggest a potential outperformance of Industrials over Utilities.",
+            "end_date": "2024-07-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Energy",
+            "relative_return_view": 0.025,
+            "reasoning": "Strong trend strength in Consumer Discretionary and weak trend strength in Energy, combined with relatively high CAPEI in Consumer Discretionary and low CAPEI in Energy, suggest a potential outperformance of Consumer Discretionary over Energy.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.015,
+            "reasoning": "High ROE and ROA in Health Care, combined with relatively low CAPEI and totdebt_invcap in Health Care, suggest a potential outperformance of Health Care over Real Estate.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Materials",
+            "relative_return_view": 0.02,
+            "reasoning": "Strong trend strength in Financials and weak trend strength in Materials, combined with relatively high ROE and ROA in Financials and low CAPEI in Materials, suggest a potential outperformance of Financials over Materials.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Consumer Staples",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.01,
+            "reasoning": "High ROE and ROA in Consumer Staples, combined with relatively low CAPEI and totdebt_invcap in Consumer Staples, suggest a potential outperformance of Consumer Staples over Utilities.",
+            "end_date": "2024-08-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0185,
+            "reasoning": "Energy's weak technical indicators and low accounting quality metrics, combined with Materials' strong technical indicators and high accounting quality metrics, suggest a potential outperformance of Materials over Energy.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": -0.0121,
+            "reasoning": "Consumer Discretionary's high volatility and low trend strength, combined with Consumer Staples' low volatility and high trend strength, suggest a potential underperformance of Consumer Discretionary compared to Consumer Staples.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Financials",
+            "relative_return_view": 0.0219,
+            "reasoning": "Information Technology's strong technical indicators and high accounting quality metrics, combined with Financials' weak technical indicators and low accounting quality metrics, suggest a potential outperformance of Information Technology over Financials.",
+            "end_date": "2024-09-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.015,
+            "reasoning": "Energy sector's strong technical momentum and accounting fundamentals, combined with Materials sector's weak technical and accounting performance, suggest a potential outperformance of Energy over Materials.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.012,
+            "reasoning": "Financials sector's strong technical and accounting performance, driven by its high trend strength and profitability, suggests a potential outperformance over Real Estate, which has weaker technical and accounting metrics.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.018,
+            "reasoning": "Information Technology sector's strong technical momentum and accounting fundamentals, driven by its high trend strength and profitability, suggest a potential outperformance over Consumer Staples, which has weaker technical and accounting metrics.",
+            "end_date": "2024-10-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0245,
+            "reasoning": "Industrials' strong technical momentum and accounting fundamentals, combined with Energy's weak technical performance and accounting metrics, suggest a potential outperformance of Industrials over Energy.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0158,
+            "reasoning": "Consumer Discretionary's strong technical momentum and accounting fundamentals, combined with Real Estate's weak technical performance and accounting metrics, suggest a potential outperformance of Consumer Discretionary over Real Estate.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Health Care",
+            "relative_return_view": 0.0123,
+            "reasoning": "Financials' strong technical momentum and accounting fundamentals, combined with Health Care's weak technical performance and accounting metrics, suggest a potential outperformance of Financials over Health Care.",
+            "end_date": "2024-11-30"
+        }
+    ]
+]

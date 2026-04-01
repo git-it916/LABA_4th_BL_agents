@@ -1,0 +1,291 @@
+[
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0245,
+            "reasoning": "Information Technology's strong trend strength and cagr_3y, combined with Real Estate's weak trend strength and negative cagr_3y, suggest a potential outperformance of IT over RE.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Health Care",
+            "relative_return_view": 0.0182,
+            "reasoning": "Consumer Discretionary's positive z_score and trend strength, along with Health Care's negative z_score, indicate a potential outperformance of CD over HC.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.0159,
+            "reasoning": "Industrials' strong trend strength and cagr_3y, combined with Utilities' weak trend strength and low cagr_3y, suggest a potential outperformance of Industrials over Utilities.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0134,
+            "reasoning": "Financials' strong trend strength and cagr_3y, combined with Materials' weak trend strength and low cagr_3y, suggest a potential outperformance of Financials over Materials.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0119,
+            "reasoning": "Communication Services' strong trend strength and cagr_3y, combined with Energy's weak trend strength and low cagr_3y, suggest a potential outperformance of CS over Energy.",
+            "end_date": "2024-04-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0245,
+            "reasoning": "Information Technology's strong trend strength and z-score, combined with Energy's weak trend strength and z-score, suggest a potential outperformance of IT over Energy.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.0189,
+            "reasoning": "Communication Services' strong trend strength and z-score, combined with Consumer Discretionary's weak trend strength and z-score, suggest a potential outperformance of CS over CD.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0152,
+            "reasoning": "Financials' strong trend strength and z-score, combined with Real Estate's weak trend strength and z-score, suggest a potential outperformance of Financials over Real Estate.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.0128,
+            "reasoning": "Health Care's strong trend strength and z-score, combined with Utilities' weak trend strength and z-score, suggest a potential outperformance of HC over Utilities.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0114,
+            "reasoning": "Information Technology's strong trend strength and z-score, combined with Materials' weak trend strength and z-score, suggest a potential outperformance of IT over Materials.",
+            "end_date": "2024-05-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.025,
+            "reasoning": "Information Technology's strong trend strength and high z-score, combined with Utilities' weak trend strength and low z-score, suggest a potential outperformance of IT over Utilities.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Energy",
+            "relative_return_view": 0.02,
+            "reasoning": "Communication Services' strong trend strength and high z-score, combined with Energy's weak trend strength and low z-score, suggest a potential outperformance of CS over Energy.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.015,
+            "reasoning": "Financials' strong trend strength and high z-score, combined with Consumer Staples' weak trend strength and low z-score, suggest a potential outperformance of Financials over Consumer Staples.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Materials",
+            "relative_return_view": 0.012,
+            "reasoning": "Health Care's strong trend strength and high z-score, combined with Materials' weak trend strength and low z-score, suggest a potential outperformance of Health Care over Materials.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.01,
+            "reasoning": "Consumer Discretionary's strong trend strength and high z-score, combined with Real Estate's weak trend strength and low z-score, suggest a potential outperformance of CD over Real Estate.",
+            "end_date": "2024-06-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0245,
+            "reasoning": "Industrials' strong trend strength and cagr_3y, combined with Energy's weak z_score and volatility, suggest a potential outperformance of Industrials over Energy.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.0189,
+            "reasoning": "Financials' strong trend strength and cagr_3y, combined with Consumer Discretionary's weak z_score and volatility, suggest a potential outperformance of Financials over Consumer Discretionary.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Information Technology",
+            "relative_return_view": 0.0156,
+            "reasoning": "Health Care's strong z_score and trend strength, combined with Information Technology's weak z_score and volatility, suggest a potential outperformance of Health Care over Information Technology.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Utilities",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0123,
+            "reasoning": "Utilities' strong z_score and trend strength, combined with Real Estate's weak z_score and volatility, suggest a potential outperformance of Utilities over Real Estate.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Consumer Staples",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0098,
+            "reasoning": "Consumer Staples' strong trend strength and cagr_3y, combined with Materials' weak z_score and volatility, suggest a potential outperformance of Consumer Staples over Materials.",
+            "end_date": "2024-07-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Consumer Staples",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.025,
+            "reasoning": "Consumer Staples' strong trend strength and low volatility make it a good candidate for outperformance, while Consumer Discretionary's weak z-score and high volatility suggest it may underperform.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Energy",
+            "relative_return_view": 0.02,
+            "reasoning": "Health Care's strong z-score and trend strength, combined with Energy's weak z-score and volatility, suggest a potential outperformance by Health Care.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Information Technology",
+            "relative_return_view": 0.015,
+            "reasoning": "Financials' strong trend strength and low volatility make it a good candidate for outperformance, while Information Technology's weak z-score and high volatility suggest it may underperform.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Utilities",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.01,
+            "reasoning": "Utilities' strong trend strength and low volatility make it a good candidate for outperformance, while Real Estate's weak z-score and high volatility suggest it may underperform.",
+            "end_date": "2024-08-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0245,
+            "reasoning": "Strong trend strength in Consumer Discretionary and weak trend strength in Energy, combined with a high z-score in Consumer Discretionary, suggest a potential outperformance of Consumer Discretionary over Energy.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Health Care",
+            "relative_return_view": 0.0183,
+            "reasoning": "High trend strength and cagr_3y in Information Technology, combined with a low z-score in Health Care, indicate a potential outperformance of Information Technology over Health Care.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Utilities",
+            "sector_2": "Financials",
+            "relative_return_view": 0.0159,
+            "reasoning": "Strong trend strength and cagr_3y in Utilities, combined with a low z-score in Financials, suggest a potential outperformance of Utilities over Financials.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0134,
+            "reasoning": "High trend strength and cagr_3y in Communication Services, combined with a low z-score in Materials, indicate a potential outperformance of Communication Services over Materials.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Consumer Staples",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0119,
+            "reasoning": "Strong trend strength and cagr_3y in Consumer Staples, combined with a low z-score in Real Estate, suggest a potential outperformance of Consumer Staples over Real Estate.",
+            "end_date": "2024-09-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.025,
+            "reasoning": "Information Technology's strong trend strength and recent returns, combined with Real Estate's weak trend strength and recent returns, suggest a potential outperformance of IT over RE.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.02,
+            "reasoning": "Financials' strong trend strength and recent returns, combined with Consumer Staples' weak trend strength and recent returns, suggest a potential outperformance of Financials over Consumer Staples.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Health Care",
+            "relative_return_view": 0.015,
+            "reasoning": "Industrials' strong trend strength and recent returns, combined with Health Care's weak trend strength and recent returns, suggest a potential outperformance of Industrials over Health Care.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Energy",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.01,
+            "reasoning": "Energy's strong trend strength and recent returns, combined with Utilities' weak trend strength and recent returns, suggest a potential outperformance of Energy over Utilities.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Materials",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.005,
+            "reasoning": "Materials' strong trend strength and recent returns, combined with Consumer Discretionary's weak trend strength and recent returns, suggest a potential outperformance of Materials over Consumer Discretionary.",
+            "end_date": "2024-10-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Health Care",
+            "relative_return_view": 0.0245,
+            "reasoning": "Strong momentum in Consumer Discretionary, coupled with a relatively weak trend in Health Care, supports a long position in Consumer Discretionary and a short position in Health Care.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.0192,
+            "reasoning": "Financials have shown strong growth and momentum, while Utilities have been relatively flat. This suggests a long position in Financials and a short position in Utilities.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0158,
+            "reasoning": "Industrials have demonstrated strong growth and momentum, while Materials have been relatively weak. This supports a long position in Industrials and a short position in Materials.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Consumer Staples",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0123,
+            "reasoning": "Consumer Staples have shown consistent growth and stability, while Real Estate has been relatively weak. This suggests a long position in Consumer Staples and a short position in Real Estate.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0109,
+            "reasoning": "Information Technology has demonstrated strong growth and momentum, while Energy has been relatively weak. This supports a long position in Information Technology and a short position in Energy.",
+            "end_date": "2024-11-30"
+        }
+    ]
+]
