@@ -5,12 +5,12 @@ from aiportfolio.agents.Llama_config import cleanup_pipeline
 #            configuration           #
 ######################################
 
-simul_name_base = '0331_rep50_'
+simul_name_base = '0420_rep50_'
 
-Tier1_repetition_count = 50
-Tier2_repetition_count = 50
-Tier3_repetition_count = 50
-
+Tier1_repetition_count = 0
+Tier2_repetition_count = 0
+Tier3_repetition_count = 10
+tier3_mode = 'regime'   # 또는 'macro'
 tau = 0.025
 model = 'llama'  # 'llama' or 'gemini'
 
@@ -56,10 +56,12 @@ if Tier2_repetition_count >= 1:
             continue
 
 if Tier3_repetition_count >= 1:
+    # macro / regime 결과가 서로 덮어쓰지 않도록 simul_name 에 모드 접미사 부착
+    tier3_suffix = f'Tier3_{tier3_mode}_'
     for i in range(1, Tier3_repetition_count + 1):
-        simul_name = simul_name_base + 'Tier3_' + f'{i}'
+        simul_name = simul_name_base + tier3_suffix + f'{i}'
         try:
-            scene(simul_name, 3, tau, forecast_period, backtest_days_count, model)
+            scene(simul_name, 3, tau, forecast_period, backtest_days_count, model, tier3_mode=tier3_mode)
         except Exception as e:
             print(f"[오류] {simul_name} 실패: {e}")
             failed_simulations.append(simul_name)

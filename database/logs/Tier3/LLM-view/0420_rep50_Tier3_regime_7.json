@@ -1,0 +1,64 @@
+[
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.015,
+            "reasoning": "Energy's strong technical momentum and accounting fundamentals, combined with Materials' weak technical performance and accounting metrics, support a long Energy and short Materials view.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.02,
+            "reasoning": "Information Technology's strong technical momentum and accounting fundamentals, combined with Real Estate's weak technical performance and accounting metrics, support a long Information Technology and short Real Estate view.",
+            "end_date": "2024-04-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.025,
+            "reasoning": "Strong trend strength in IT and weak trend strength in Energy, combined with high CAPEI in IT and low CAPEI in Energy, suggest a potential outperformance of IT over Energy.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.015,
+            "reasoning": "High trend strength in Communication Services and low trend strength in Consumer Discretionary, along with high CAPEI in Communication Services and low CAPEI in Consumer Discretionary, indicate a potential outperformance of Communication Services over Consumer Discretionary.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.01,
+            "reasoning": "Strong trend strength in Financials and weak trend strength in Real Estate, combined with high CAPEI in Financials and low CAPEI in Real Estate, suggest a potential outperformance of Financials over Real Estate.",
+            "end_date": "2024-05-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.025,
+            "reasoning": "Strong trend strength in Information Technology and weak trend strength in Energy, combined with high CAPEI in Information Technology, support a long position in Information Technology and a short position in Energy.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.015,
+            "reasoning": "Strong trend strength in Communication Services and weak trend strength in Utilities, combined with high CAPEI in Communication Services, support a long position in Communication Services and a short position in Utilities.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.02,
+            "reasoning": "Strong trend strength in Consumer Discretionary and weak trend strength in Consumer Staples, combined with high CAPEI in Consumer Discretionary, support a long position in Consumer Discretionary and a short position in Consumer Staples.",
+            "end_date": "2024-06-30"
+        }
+    ]
+]

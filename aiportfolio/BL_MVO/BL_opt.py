@@ -6,7 +6,7 @@ from datetime import datetime
 from aiportfolio.BL_MVO.BL_params.market_params import Market_Params
 from aiportfolio.BL_MVO.BL_params.view_params import get_view_params
 
-def get_bl_outputs(tau, start_date, end_date, simul_name=None, Tier=None, model='llama'):
+def get_bl_outputs(tau, start_date, end_date, simul_name=None, Tier=None, model='llama', tier3_mode='macro'):
     """
     Execute the Black-Litterman model to compute posterior expected returns and covariance.
 
@@ -37,7 +37,7 @@ def get_bl_outputs(tau, start_date, end_date, simul_name=None, Tier=None, model=
     sigma = market_params.making_sigma()  # Covariance matrix (Σ)
     sigma_for_optimize = market_params.making_sigma_for_optimize()
 
-    P, Q, Omega = get_view_params(sigma[0], tau, end_date, simul_name, Tier, model)
+    P, Q, Omega = get_view_params(sigma[0], tau, end_date, simul_name, Tier, model, tier3_mode=tier3_mode)
 
     # --- Execute the Black-Litterman formula ---
     pi_np = (Pi.values.flatten() if isinstance(Pi, pd.DataFrame) else Pi.flatten()).reshape(-1, 1)

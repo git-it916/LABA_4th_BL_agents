@@ -59,7 +59,7 @@ def _print_user_prompt_summary(user_prompt, tier):
 
     print(f"{'─'*80}\n")
 
-def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='llama'):
+def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='llama', tier3_mode='macro'):
     """
     LLM을 사용하여 섹터 간 상대적 뷰를 생성하고 저장합니다.
 
@@ -68,16 +68,17 @@ def generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model='ll
         end_date: 예측 기준일
         simul_name (str): 시뮬레이션 이름
         Tier (int): 분석 단계 (1, 2, 3)
+        tier3_mode (str): 'macro' (기본) | 'regime' (REGIME_QMS 사용)
 
     Returns:
         list: 파싱된 뷰 데이터 (Python 리스트)
     """
     # 1. 시스템 프롬프트 정의 (LLM의 역할, 규칙, 최종 출력 형식)
-    system_prompt = making_system_prompt(tier=Tier)
+    system_prompt = making_system_prompt(tier=Tier, tier3_mode=tier3_mode)
 
     # 2. 사용자 프롬프트 정의 (실제 데이터 + 실행 명령)
     # Tier 인자를 전달하여 단계별 데이터 포함
-    user_prompt = making_user_prompt(end_date=end_date, tier=Tier)
+    user_prompt = making_user_prompt(end_date=end_date, tier=Tier, tier3_mode=tier3_mode)
 
     # 프롬프트 요약 출력
     print(f"\n[프롬프트] 시스템: {len(system_prompt)}자 | 사용자: {len(user_prompt)}자")

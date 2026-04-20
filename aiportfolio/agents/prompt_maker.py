@@ -18,6 +18,7 @@ from aiportfolio.agents.prepare.Tier1_calculate import indicator
 # Tier2 계산 함수는 파일이 없을 때를 대비해 import 유지
 from aiportfolio.agents.prepare.Tier2_calculate import calculate_accounting_indicator
 from aiportfolio.agents.prepare.Tier3_calculate import calculate_macro_indicator
+from aiportfolio.agents.prepare.Tier3_regime import calculate_regime_indicator
 
 # ==========================================================
 # [설정] 데이터베이스 경로
@@ -211,9 +212,18 @@ def making_tier3_INPUT(end_date):
     return macro_data
 
 
-def load_tier_guidelines(tier):
+def making_tier3_regime_INPUT(end_date):
     """
-    Tier별 분석 가이드라인 로드 (누적 방식)
+    Tier 3 (시장 레짐) 데이터 생성 — REGIME_QMS.csv 기반
+    macro 지표 대신 DRAI/GROWTH/INFLATION 3개 regime 의 STATES + 확률을 반환.
+    """
+    return calculate_regime_indicator(end_date)
+
+
+def load_tier_guidelines(tier, tier3_mode='macro'):
+    """
+    Tier별 분석 가이드라인 로드 (누적 방식).
+    tier3_mode='regime' 이면 Tier 3 섹션을 '3 GUIDELINES (REGIME VERSION)' 블록으로 교체한다.
     """
     base_path = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(base_path, 'prompt_template', 'tier_guidelines.txt')
@@ -227,8 +237,17 @@ def load_tier_guidelines(tier):
         tier_sections = []
 
         for target_tier in included_tiers:
+            # Tier 3 은 모드별로 다른 헤더를 매칭 (파일 내 블록 배치 순서와 독립적)
+            if target_tier == 3:
+                if tier3_mode == 'regime':
+                    target_header = '3 GUIDELINES (REGIME VERSION)'
+                else:
+                    target_header = '3 GUIDELINES (Technical'
+            else:
+                target_header = f'{target_tier} GUIDELINES'
+
             for section in sections:
-                if section.startswith(f'{target_tier} GUIDELINES'):
+                if section.startswith(target_header):
                     end_marker = '\n### TIER '
                     if end_marker in section:
                         section = section[:section.index(end_marker)]
@@ -262,9 +281,10 @@ def load_tier_guidelines(tier):
         return f"[Error loading Tier {tier} guidelines]"
 
 
-def making_system_prompt(tier):
+def making_system_prompt(tier, tier3_mode='macro'):
     """
     Tier별 시스템 프롬프트 생성
+    tier3_mode: 'macro' (기본, 기존 거시 지표) | 'regime' (REGIME_QMS 사용)
     """
     base_path = os.path.dirname(os.path.abspath(__file__))
     template_path = os.path.join(base_path, 'prompt_template', 'system_prompt.txt')
@@ -273,7 +293,14 @@ def making_system_prompt(tier):
         with open(template_path, 'r', encoding='utf-8') as f:
             template = f.read()
 
-        tier_guidelines = load_tier_guidelines(tier)
+        # regime 모드일 땐 역할 설명의 거시지표 예시도 레짐 예시로 치환
+        if tier3_mode == 'regime':
+            template = template.replace(
+                "Macroeconomic conditions (e.g., FEDFUNDS, CPI, G20_CLI, T10Y2Y, GPDIC1_PCA)",
+                "Market regime states (DRAI risk regime, MACRO growth regime, MACRO inflation regime, each with HMM posterior probabilities)"
+            )
+
+        tier_guidelines = load_tier_guidelines(tier, tier3_mode=tier3_mode)
 
         prompt = template.replace('{{TIER}}', str(tier))
         prompt = prompt.replace('{{TIER_SPECIFIC_GUIDELINES}}', tier_guidelines)
@@ -290,12 +317,13 @@ def making_system_prompt(tier):
         return None
 
 
-def making_user_prompt(end_date, tier):
+def making_user_prompt(end_date, tier, tier3_mode='macro'):
     """
     Tier별 사용자 프롬프트 생성
+    tier3_mode: 'macro' (기본) | 'regime' (REGIME_QMS 기반)
     """
     # 날짜 타입 디버깅
-    print(f"[디버그] making_user_prompt: end_date={end_date}, type={type(end_date)}, tier={tier}")
+    print(f"[디버그] making_user_prompt: end_date={end_date}, type={type(end_date)}, tier={tier}, tier3_mode={tier3_mode}")
 
     base_path = os.path.dirname(os.path.abspath(__file__))
     template_path = os.path.join(base_path, 'prompt_template', 'user_prompt.txt')
@@ -318,11 +346,16 @@ def making_user_prompt(end_date, tier):
             tier2_json = json.dumps(tier2_data, indent=2, ensure_ascii=False)
             data_blocks.append(f"\n=== Accounting Indicators (Tier 2) ===\n{tier2_json}")
 
-        # Tier 3: 거시 지표 추가
+        # Tier 3: 거시 지표 or 시장 레짐
         if tier >= 3:
-            tier3_data = making_tier3_INPUT(end_date)
-            tier3_json = json.dumps(tier3_data, indent=2, ensure_ascii=False)
-            data_blocks.append(f"\n=== Macro Indicators (Tier 3) ===\n{tier3_json}")
+            if tier3_mode == 'regime':
+                tier3_data = making_tier3_regime_INPUT(end_date)
+                tier3_json = json.dumps(tier3_data, indent=2, ensure_ascii=False)
+                data_blocks.append(f"\n=== Market Regime (Tier 3) ===\n{tier3_json}")
+            else:
+                tier3_data = making_tier3_INPUT(end_date)
+                tier3_json = json.dumps(tier3_data, indent=2, ensure_ascii=False)
+                data_blocks.append(f"\n=== Macro Indicators (Tier 3) ===\n{tier3_json}")
 
         combined_data = '\n'.join(data_blocks)
 

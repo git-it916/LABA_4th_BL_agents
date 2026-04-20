@@ -18,9 +18,12 @@ def _clear_gpu_memory():
         torch.cuda.empty_cache()
         torch.cuda.synchronize()
 
-def scene(simul_name, Tier, tau, forecast_period, backtest_days_count, model='llama'):
+def scene(simul_name, Tier, tau, forecast_period, backtest_days_count, model='llama', tier3_mode='macro'):
     """
     전체 시뮬레이션 실행 함수
+
+    tier3_mode: 'macro' (기본, Tier3.csv 거시 지표) | 'regime' (REGIME_QMS 시장 레짐)
+                Tier==3 일 때만 의미 있음.
     """
     # 결과를 저장할 디렉토리 생성
     base_dir = os.path.join("database", "logs")
@@ -47,7 +50,7 @@ def scene(simul_name, Tier, tau, forecast_period, backtest_days_count, model='ll
         end_date = period['end_date']
 
         # BL 실행 (LLM 호출 포함)
-        BL = get_bl_outputs(tau, start_date=start_date, end_date=end_date, simul_name=simul_name, Tier=Tier, model=model)
+        BL = get_bl_outputs(tau, start_date=start_date, end_date=end_date, simul_name=simul_name, Tier=Tier, model=model, tier3_mode=tier3_mode)
 
         # LLM 호출 후 GPU 메모리 정리
         _clear_gpu_memory()

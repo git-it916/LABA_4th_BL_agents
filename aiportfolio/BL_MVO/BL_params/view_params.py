@@ -5,7 +5,7 @@ from aiportfolio.agents.Llama_config import prepare_pipeline_obj
 from aiportfolio.agents.Llama_view_generator import generate_sector_views
 from aiportfolio.agents.converting_viewtomatrix import open_view_log, create_Q_vector, create_P_matrix
 
-def get_view_params(sigma, tau, end_date, simul_name, Tier, model='llama'):
+def get_view_params(sigma, tau, end_date, simul_name, Tier, model='llama', tier3_mode='macro'):
     """
     This function calculates and returns the view-related parameters P, Q, and Omega.
 
@@ -39,7 +39,7 @@ def get_view_params(sigma, tau, end_date, simul_name, Tier, model='llama'):
         # Gemini는 pipeline 불필요
         pipeline_to_use = None
 
-    generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model)
+    generate_sector_views(pipeline_to_use, end_date, simul_name, Tier, model, tier3_mode=tier3_mode)
     views_data = open_view_log(simul_name=simul_name, Tier=Tier, end_date=end_date)
 
     if views_data is None:
