@@ -1,0 +1,234 @@
+[
+    {
+        "forecast_date": "2024-05-31 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "5.1000%",
+            "0.0000%",
+            "0.0000%",
+            "20.4000%",
+            "70.6000%",
+            "3.9000%",
+            "0.0000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-06-30 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.2002%",
+            "55.6557%",
+            "24.0240%",
+            "20.1201%",
+            "0.0000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-07-31 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "16.6000%",
+            "64.0000%",
+            "19.4000%",
+            "0.0000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-08-31 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "29.8000%",
+            "21.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "49.2000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-09-30 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "30.0000%",
+            "70.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-10-31 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "4.0959%",
+            "0.0000%",
+            "0.0000%",
+            "71.9281%",
+            "0.0000%",
+            "23.9760%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-11-30 00:00:00",
+        "w_aiportfolio": [
+            "14.7000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%",
+            "43.6000%",
+            "41.7000%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    },
+    {
+        "forecast_date": "2024-12-31 00:00:00",
+        "w_aiportfolio": [
+            "0.0000%",
+            "0.0000%",
+            "2.3023%",
+            "4.1041%",
+            "27.8278%",
+            "0.0000%",
+            "32.5325%",
+            "33.2332%",
+            "0.0000%",
+            "0.0000%",
+            "0.0000%"
+        ],
+        "SECTOR": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Health Care",
+            "Financials",
+            "Information Technology",
+            "Communication Services",
+            "Utilities",
+            "Real Estate"
+        ]
+    }
+]

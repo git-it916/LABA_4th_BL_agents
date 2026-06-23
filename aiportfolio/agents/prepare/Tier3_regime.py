@@ -4,7 +4,8 @@ import pandas as pd
 # python -m aiportfolio.agents.prepare.Tier3_regime
 
 # REGIME_QMS.csv 에서 사용할 RegimeName 고정 순서
-REGIME_NAMES = ("DRAI_Multi", "MACRO_GROWTH_Multi", "MACRO_INFLATION_Multi")
+# B안: DRAI 단일 신호만 사용 (GROWTH/INFLATION 은 매핑 혼란으로 제외)
+REGIME_NAMES = ("DRAI_Multi",)
 
 
 def _load_regime_raw() -> pd.DataFrame:

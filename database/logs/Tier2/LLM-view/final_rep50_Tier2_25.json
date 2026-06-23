@@ -1,0 +1,221 @@
+[
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0185,
+            "reasoning": "Energy sector's recent strong trend and low volatility, combined with its relatively low CAPEI and totdebt_invcap, make it a strong candidate to outperform Materials, which has a weaker trend and higher CAPEI.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.025,
+            "reasoning": "Information Technology's strong trend and high CAPEI, combined with its relatively low totdebt_invcap, make it a strong candidate to outperform Real Estate, which has a weaker trend and higher CAPEI.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.015,
+            "reasoning": "Consumer Discretionary's recent strong trend and relatively low CAPEI, combined with its high npm and roe, make it a strong candidate to outperform Consumer Staples, which has a weaker trend and higher CAPEI.",
+            "end_date": "2024-04-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.0205,
+            "reasoning": "Financials' strong trend and relatively low CAPEI, combined with its high npm and roe, make it a strong candidate to outperform Utilities, which has a weaker trend and higher CAPEI.",
+            "end_date": "2024-04-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.025,
+            "reasoning": "Information Technology's strong trend strength and high CAPEI indicate a potential outperformance, while Energy's weak z-score and low trend strength suggest a potential underperformance.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.015,
+            "reasoning": "Communication Services' high trend strength and strong accounting metrics, such as high ROE and low debt, suggest a potential outperformance, while Consumer Discretionary's weak z-score and low trend strength indicate a potential underperformance.",
+            "end_date": "2024-05-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.02,
+            "reasoning": "Financials' strong trend strength and high ROE suggest a potential outperformance, while Real Estate's weak z-score and low trend strength indicate a potential underperformance.",
+            "end_date": "2024-05-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Energy",
+            "relative_return_view": 0.025,
+            "reasoning": "Information Technology's strong trend strength and high CAPEI, combined with Energy's weak z-score and low trend strength, suggest a potential outperformance of IT over Energy.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Communication Services",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.02,
+            "reasoning": "Communication Services' strong trend strength and high CAPEI, combined with Utilities' weak z-score and low trend strength, suggest a potential outperformance of CS over Utilities.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.015,
+            "reasoning": "Financials' strong trend strength and high CAPEI, combined with Real Estate's weak z-score and low trend strength, suggest a potential outperformance of Financials over Real Estate.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.01,
+            "reasoning": "Consumer Discretionary's strong trend strength and high CAPEI, combined with Consumer Staples' weak z-score and low trend strength, suggest a potential outperformance of CD over CS.",
+            "end_date": "2024-06-30"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Materials",
+            "relative_return_view": 0.005,
+            "reasoning": "Health Care's strong trend strength and high CAPEI, combined with Materials' weak z-score and low trend strength, suggest a potential outperformance of HC over Materials.",
+            "end_date": "2024-06-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.015,
+            "reasoning": "Energy sector's strong technical momentum and accounting fundamentals, such as high ROE and ROA, suggest it may outperform Materials sector, which has weaker technical indicators and lower ROE and ROA.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.012,
+            "reasoning": "Industrials sector's strong technical momentum and accounting fundamentals, such as high ROE and ROA, suggest it may outperform Consumer Discretionary sector, which has weaker technical indicators and lower ROE and ROA.",
+            "end_date": "2024-07-31"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Financials",
+            "relative_return_view": 0.008,
+            "reasoning": "Health Care sector's strong technical momentum and accounting fundamentals, such as high ROE and ROA, suggest it may outperform Financials sector, which has weaker technical indicators and lower ROE and ROA.",
+            "end_date": "2024-07-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.015,
+            "reasoning": "Energy sector's weak technical indicators and low accounting quality metrics, combined with Materials sector's strong technical indicators and high accounting quality metrics, suggest a potential outperformance of Materials over Energy.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Industrials",
+            "relative_return_view": -0.02,
+            "reasoning": "Consumer Discretionary sector's weak technical indicators and low accounting quality metrics, combined with Industrials sector's strong technical indicators and high accounting quality metrics, suggest a potential underperformance of Consumer Discretionary compared to Industrials.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Health Care",
+            "sector_2": "Financials",
+            "relative_return_view": 0.01,
+            "reasoning": "Health Care sector's strong technical indicators and high accounting quality metrics, combined with Financials sector's weak technical indicators and low accounting quality metrics, suggest a potential outperformance of Health Care over Financials.",
+            "end_date": "2024-08-31"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": -0.025,
+            "reasoning": "Information Technology sector's strong technical indicators and high accounting quality metrics, combined with Real Estate sector's weak technical indicators and low accounting quality metrics, suggest a potential underperformance of Real Estate compared to Information Technology.",
+            "end_date": "2024-08-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Energy",
+            "sector_2": "Materials",
+            "relative_return_view": 0.0215,
+            "reasoning": "Energy's weak technical indicators, including a negative z-score and low trend strength, are contrasted with Materials' strong technical indicators, including a positive z-score and high trend strength.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Consumer Staples",
+            "relative_return_view": 0.015,
+            "reasoning": "Consumer Discretionary's strong technical indicators, including a positive z-score and high trend strength, are contrasted with Consumer Staples' weak technical indicators, including a negative z-score and low trend strength.",
+            "end_date": "2024-09-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.012,
+            "reasoning": "Information Technology's strong technical indicators, including a positive z-score and high trend strength, are contrasted with Real Estate's weak technical indicators, including a negative z-score and low trend strength.",
+            "end_date": "2024-09-30"
+        }
+    ],
+    [
+        {
+            "sector_1": "Industrials",
+            "sector_2": "Consumer Discretionary",
+            "relative_return_view": 0.0185,
+            "reasoning": "Industrials' strong trend strength and cagr_3y, combined with Consumer Discretionary's weak z_score and volatility, suggest a potential outperformance of Industrials.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0123,
+            "reasoning": "Financials' strong trend strength and cagr_3y, combined with Real Estate's weak trend strength and cagr_3y, suggest a potential outperformance of Financials.",
+            "end_date": "2024-10-31"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.0152,
+            "reasoning": "Information Technology's strong trend strength and cagr_3y, combined with Utilities' weak trend strength and cagr_3y, suggest a potential outperformance of Information Technology.",
+            "end_date": "2024-10-31"
+        }
+    ],
+    [
+        {
+            "sector_1": "Consumer Discretionary",
+            "sector_2": "Energy",
+            "relative_return_view": 0.0215,
+            "reasoning": "Strong trend strength and high z-score in Consumer Discretionary, combined with weak technical indicators in Energy, suggest a potential outperformance of Consumer Discretionary over Energy.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Financials",
+            "sector_2": "Real Estate",
+            "relative_return_view": 0.0184,
+            "reasoning": "Financials' strong technical indicators, including high trend strength and z-score, contrast with Real Estate's weak technical indicators, suggesting a potential outperformance of Financials over Real Estate.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Information Technology",
+            "sector_2": "Utilities",
+            "relative_return_view": 0.0159,
+            "reasoning": "Information Technology's strong technical indicators, including high trend strength and z-score, contrast with Utilities' weak technical indicators, suggesting a potential outperformance of Information Technology over Utilities.",
+            "end_date": "2024-11-30"
+        },
+        {
+            "sector_1": "Consumer Staples",
+            "sector_2": "Health Care",
+            "relative_return_view": 0.0124,
+            "reasoning": "Consumer Staples' strong technical indicators, including high trend strength and z-score, contrast with Health Care's weak technical indicators, suggesting a potential outperformance of Consumer Staples over Health Care.",
+            "end_date": "2024-11-30"
+        }
+    ]
+]

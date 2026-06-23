@@ -1,0 +1,159 @@
+[p52] 교수삽입: 인
+[p410] 교수삽입: itterman
+[p469] 교수삽입: Figure 1. Cumulative Performance Comparison
+[p472] 교수삽입: [Line plot]
+[p475] 교수삽입: - X축: trading days
+[p476] 교수삽입: - Y축: Cumulative excess return (%)
+[p477] 교수삽입: - 3개 선:
+[p478] 교수삽입: * S&P 500 VW (회색, 점선)
+[p479] 교수삽입: * Mean-Variance Optimization (파란색, 파선)
+[p480] 교수삽입: * AI-BL Tier 3 (빨간색, 굵은 실선)
+[p490] 교수삽입: This table presents the sample selection process and distribution. Panel A reports the sequential filtering steps for the in-sample period (2015.01-2024.04). We start with all CRSP stock-months and filter for NYSE/NASDAQ listings, GICS sector availability, and S&P 500 membership, resulting in 55,547
+[p492] 교수삽입: Panel A. In-Sample Period (2015.01-2024.04, Monthly Data)
+[p493] 교수삽입: Sample Selection Process
+[p494] 교수삽입: Firm-Month Observations
+[p495] 교수삽입: All stock-months from CRSP
+[p496] 교수삽입: 971,951
+[p497] 교수삽입: Less: Not listed on NYSE or NASDAQ
+[p498] 교수삽입: (268,730)
+[p499] 교수삽입: Less: No GICS sector information
+[p500] 교수삽입: (204,076)
+[p501] 교수삽입: Less: Not in S&P 500
+[p502] 교수삽입: (443,598)
+[p503] 교수삽입: Final in-sample
+[p504] 교수삽입: 55,547
+[p506] 교수삽입: Panel B. Out-of-Sample Period (2024.05-2024.12, Daily Data)
+[p507] 교수삽입: Sample Selection Process
+[p508] 교수삽입: Firm-Day Observations
+[p509] 교수삽입: All stock-days from CRSP
+[p510] 교수삽입: 1,619,207
+[p511] 교수삽입: Less: Not listed on NYSE or NASDAQ
+[p512] 교수삽입: (540,946)
+[p513] 교수삽입: Less: No GICS sector information
+[p514] 교수삽입: (274,477)
+[p515] 교수삽입: Less: Not in S&P 500
+[p516] 교수삽입: (719,389)
+[p517] 교수삽입: Final out-of-sample
+[p518] 교수삽입: 84,395
+[p520] 교수삽입: Panel C. Distribution by GICS Sector (In-Sample Period)
+[p521] 교수삽입: Distribution by GICS Sector
+[p522] 교수삽입: Observations
+[p523] 교수삽입: % of Total
+[p524] 교수삽입: Avg. per Month
+[p525] 교수삽입: Energy
+[p529] 교수삽입: Materials
+[p533] 교수삽입: Industrials
+[p537] 교수삽입: Consumer Discretionary
+[p541] 교수삽입: Consumer Staples
+[p545] 교수삽입: Health Care
+[p549] 교수삽입: Financials
+[p553] 교수삽입: Information Technology
+[p557] 교수삽입: Communication Services
+[p561] 교수삽입: Utilities
+[p565] 교수삽입: Real Estate
+[p569] 교수삽입: Total
+[p570] 교수삽입: 55,547
+[p571] 교수삽입: 100.0%
+[p572] 교수삽입: 496
+[p574] 교수삽입: (In-Sample Period: 2015.01-2024.04)
+[p575] 교수삽입: Notes: This table reports descriptive statistics for the in-sample period (2015.01-2024.04, 112 months). Panel A presents monthly excess returns for 11 GICS sectors and the market portfolio, computed as market-cap weighted averages. Excess returns subtract the 3-month Treasury Bill rate. Sharpe rati
+[p577] 교수삽입: Panel A: Monthly Sector Returns
+[p578] 교수삽입: GICS
+[p579] 교수삽입: Sector
+[p580] 교수삽입: Mean (%)
+[p581] 교수삽입: Std Dev (%)
+[p582] 교수삽입: Min (%)
+[p583] 교수삽입: Max (%)
+[p584] 교수삽입: Sharpe Ratio
+[p585] 교수삽입: 10
+[p586] 교수삽입: Energy
+[p592] 교수삽입: 15
+[p593] 교수삽입: Materials
+[p599] 교수삽입: 20
+[p600] 교수삽입: Industrials
+[p606] 교수삽입: 25
+[p607] 교수삽입: Consumer Discretionary
+[p613] 교수삽입: 30
+[p614] 교수삽입: Consumer Staples
+[p620] 교수삽입: 35
+[p621] 교수삽입: Health Care
+[p627] 교수삽입: 40
+[p628] 교수삽입: Financials
+[p634] 교수삽입: 45
+[p635] 교수삽입: Information Technology
+[p641] 교수삽입: 50
+[p642] 교수삽입: Communication Services
+[p648] 교수삽입: 55
+[p649] 교수삽입: Utilities
+[p655] 교수삽입: 60
+[p656] 교수삽입: Real Estate
+[p662] 교수삽입: Market Portfolio
+[p669] 교수삽입: Panel B: Macroeconomic Indicators
+[p670] 교수삽입: Variable
+[p671] 교수삽입: Mean
+[p672] 교수삽입: Std Dev
+[p673] 교수삽입: Min
+[p674] 교수삽입: Max
+[p675] 교수삽입: Federal Funds Rate (%)
+[p680] 교수삽입: 10-Year Treasury Yield (%)
+[p685] 교수삽입: VIX Index
+[p690] 교수삽입: Industrial Production Growth (YoY %)
+[p695] 교수삽입: CPI Inflation (YoY %)
+[p700] 교수삽입: 등등등
+[p706] 교수삽입: Panel C: Accounting Fundamentals by Sector (Median Values)
+[p707] 교수삽입: GICS Code
+[p708] 교수삽입: Sector Name
+[p709] 교수삽입: ROE
+[p710] 교수삽입: Debt/Equity
+[p711] 교수삽입: Revenue Growth
+[p712] 교수삽입: 등등등
+[p714] 교수삽입: 10
+[p715] 교수삽입: Energy
+[p721] 교수삽입: 15
+[p722] 교수삽입: Materials
+[p728] 교수삽입: 20
+[p729] 교수삽입: Industrials
+[p735] 교수삽입: 25
+[p736] 교수삽입: Consumer Discretionary
+[p742] 교수삽입: 30
+[p743] 교수삽입: Consumer Staples
+[p749] 교수삽입: 35
+[p750] 교수삽입: Health Care
+[p756] 교수삽입: 40
+[p757] 교수삽입: Financials
+[p763] 교수삽입: 45
+[p764] 교수삽입: Information Technology
+[p770] 교수삽입: 50
+[p771] 교수삽입: Communication Services
+[p777] 교수삽입: 55
+[p778] 교수삽입: Utilities
+[p784] 교수삽입: 60
+[p785] 교수삽입: Real Estate
+[p793] 교수삽입: Table 3. Portfolio Performance Comparison (Out-of-Sample: 2024.05-2024.12)
+[p795] 교수삽입: This table compares portfolio performance during the out-of-sample period (2024.05-2024.12, 160 trading days). Panel A compares the AI-BL portfolio (Tier 3: returns + macro + accounting) against the S&P 500 value-weighted market benchmark. Cumulative returns are computed over the 8-month period. Sha
+[p797] 교수삽입: Panel A: AI-BL Portfolio vs Market Benchmark
+[p800] 교수삽입: Benchmark (VW Market)
+[p801] 교수삽입: AI-BL (Tier3)
+[p802] 교수삽입: Difference
+[p803] 교수삽입: (t-stat)
+[p804] 교수삽입: Cumulative Return
+[p808] 교수삽입: Sharpe Ratio
+[p812] 교수삽입: N (trading days)
+[p817] 교수삽입: Panel B: Performance by Information Integration Level
+[p820] 교수삽입: Tier 1
+[p821] 교수삽입: Tier 2
+[p822] 교수삽입: Tier 3
+[p823] 교수삽입: T2 - T1
+[p824] 교수삽입: (t-stat)
+[p825] 교수삽입: T3 - T2
+[p826] 교수삽입: (t-stat)
+[p827] 교수삽입: T3 - T1
+[p828] 교수삽입: (t-stat)
+[p829] 교수삽입: Cumulative Return
+[p836] 교수삽입: Sharpe Ratio
+[p843] 교수삽입: N (trading days)
+[p862] 교수삽입: Appendix 1. AI Agent Prompts
+[p864] 교수삽입: Panel A. System Prompt
+[p866] 교수삽입: Panel B. User Prompt
+[p868] 교수삽입: Panel C. Input Data Structure
+[p870] 교수삽입: Panel D. Output Data Structure

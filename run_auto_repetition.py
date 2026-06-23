@@ -5,12 +5,13 @@ from aiportfolio.agents.Llama_config import cleanup_pipeline
 #            configuration           #
 ######################################
 
-simul_name_base = '0420_rep50_'
+simul_name_base = 'final_rep50_'
 
 Tier1_repetition_count = 0
 Tier2_repetition_count = 0
-Tier3_repetition_count = 10
-tier3_mode = 'regime'   # 또는 'macro'
+Tier3_repetition_count = 50
+Tier3_start = 26       # 끊긴 지점부터 재시작 (정상 시작은 1)
+tier3_mode = 'macro'   # 또는 'regime'
 tau = 0.025
 model = 'llama'  # 'llama' or 'gemini'
 
@@ -58,7 +59,7 @@ if Tier2_repetition_count >= 1:
 if Tier3_repetition_count >= 1:
     # macro / regime 결과가 서로 덮어쓰지 않도록 simul_name 에 모드 접미사 부착
     tier3_suffix = f'Tier3_{tier3_mode}_'
-    for i in range(1, Tier3_repetition_count + 1):
+    for i in range(Tier3_start, Tier3_repetition_count + 1):
         simul_name = simul_name_base + tier3_suffix + f'{i}'
         try:
             scene(simul_name, 3, tau, forecast_period, backtest_days_count, model, tier3_mode=tier3_mode)

@@ -36,16 +36,15 @@ When signals from different tiers suggest contradictory views, apply the followi
 ---
 
 ### TIER 3 GUIDELINES (REGIME VERSION)
-Tier 3 is a whole-market regime snapshot (state in {-1, 0, +1} with HMM probabilities). Use it to **confirm or dampen** Tier 1/2 views — never to generate new pairs.
+Tier 3 is a whole-market risk regime snapshot from an HMM. Use it to **confirm or dampen** Tier 1/2 views — never to generate new pairs.
 
-- DRAI: +1 risk-on, -1 risk-off.
-- GROWTH: +1 expansion, -1 contraction.
-- INFLATION: +1 rising, -1 disinflation.
+- DRAI_Multi: state +1 = risk-on / benign, state -1 = risk-off / stress, state 0 = ambiguous.
+- The HMM posterior probabilities (`prob_positive`, `prob_neutral`, `prob_negative`) indicate confidence.
 
 Rules:
-- If dominant prob < 0.6, ignore regime.
-- Risk-off or contraction -> shrink view magnitudes.
-- Risk-on or expansion -> allow full range.
+- If the dominant probability < 0.6, treat the regime as ambiguous and ignore it.
+- Risk-off (state -1 with high negative probability) -> shrink view magnitudes; be defensive.
+- Risk-on (state +1 with high positive probability) -> allow the full `-0.05 to +0.05` range.
 - Priority: Technical > Accounting > Regime.
 - Keep each `reasoning` under 25 words.
 
